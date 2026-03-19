@@ -3,111 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rifa de Pascuas - Edición Especial</title>
+    <title>Rifa de Pascuas</title>
     <style>
-        /* ESTILO 1: DARK MODE CON GRILLA SIMÉTRICA */
         body { 
-            font-family: 'Inter', -apple-system, sans-serif; 
+            font-family: sans-serif; 
             background-color: #121212; 
             color: #e0e0e0; 
             padding: 10px; 
             margin: 0;
+            text-align: center;
         }
         .container { 
             background: #1e1e1e; 
-            padding: 20px; 
-            border-radius: 24px; 
-            max-width: 550px; /* Un poquito más ancho para las 10 columnas */
+            padding: 15px; 
+            border-radius: 20px; 
+            max-width: 500px; 
             margin: auto; 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
             border: 1px solid #333;
         }
-        h1 { color: #ff4081; font-size: 24px; margin-bottom: 5px; text-align: center; }
-        .subtitulo { color: #888; font-weight: 500; margin-bottom: 20px; display: block; text-transform: uppercase; font-size: 10px; letter-spacing: 2px; text-align: center; }
+        h1 { color: #ff4081; font-size: 22px; margin-bottom: 5px; }
+        .subtitulo { color: #888; font-size: 10px; letter-spacing: 2px; display: block; margin-bottom: 15px; }
 
         .info-box { 
             background: #252525; 
-            border-radius: 16px; 
+            border-radius: 12px; 
             padding: 15px; 
-            margin-bottom: 20px; 
+            margin-bottom: 15px; 
             border-left: 4px solid #ff4081;
+            text-align: left;
         }
         
         .pago-info { 
             background: #121212; 
-            border-radius: 12px; 
-            padding: 15px; 
+            padding: 12px; 
             margin-top: 10px; 
             border: 1px solid #444; 
             text-align: center;
+            border-radius: 10px;
         }
         .alias-click { 
             color: #ff4081; 
             font-weight: bold; 
             cursor: pointer; 
             background: #2d2d2d; 
-            padding: 8px 15px; 
-            border-radius: 8px; 
+            padding: 5px 10px; 
+            border-radius: 5px; 
             display: inline-block;
-            margin-top: 5px;
             border: 1px solid #ff4081;
+            margin-top: 5px;
         }
-        #copiado-aviso { font-size: 12px; color: #4caf50; display: none; margin-top: 8px; font-weight: bold; }
 
-        /* GRILLA DE 10 COLUMNAS EXACTAS */
+        /* GRILLA SIMÉTRICA 10 COLUMNAS */
         .grilla { 
             display: grid; 
-            grid-template-columns: repeat(10, 1fr); /* Esto fuerza las 10 columnas */
-            gap: 6px; 
-            margin: 20px 0; 
-            min-height: 100px;
+            grid-template-columns: repeat(10, 1fr); 
+            gap: 4px; 
+            margin: 20px 0;
         }
         .nro { 
-            aspect-ratio: 1 / 1; /* Los hace cuadraditos perfectos */
+            aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
             background: #2d2d2d; 
             color: #ff4081;
-            border-radius: 8px; 
+            border-radius: 4px; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: 13px;
-            transition: 0.2s; 
+            font-size: 11px; /* Fuente pequeña para que entre en 10 cols */
             border: 1px solid #3d3d3d;
         }
-        .nro:hover { border-color: #ff4081; transform: scale(1.1); z-index: 10; }
-        .nro.reservado { background: #1a1a1a; color: #444; cursor: not-allowed; text-decoration: line-through; border: none; }
-        .nro.seleccionado { 
-            background: #ff4081; 
-            color: white; 
-            border-color: #ff4081; 
-            box-shadow: 0 0 15px rgba(255, 64, 129, 0.5); 
-        }
+        .nro.reservado { background: #111; color: #333; cursor: not-allowed; text-decoration: line-through; border: none; }
+        .nro.seleccionado { background: #ff4081; color: white; border-color: white; }
         
-        /* Formulario y Botones */
-        #form-reserva { display: none; margin-top: 20px; padding: 15px; background: #252525; border-radius: 20px; border: 1px solid #ff4081; }
-        input { padding: 12px; width: 90%; margin-bottom: 10px; border-radius: 10px; border: 1px solid #444; background: #121212; color: white; outline: none; }
-        button { background: #25d366; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; }
+        #form-reserva { display: none; margin-top: 15px; padding: 15px; background: #252525; border-radius: 15px; border: 1px solid #ff4081; }
+        input { padding: 10px; width: 85%; margin-bottom: 10px; border-radius: 8px; border: 1px solid #444; background: #121212; color: white; }
+        button { background: #25d366; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; }
 
-        /* FOOTER CENTRADO */
         .footer { 
-            margin-top: 30px; 
-            color: #888; 
-            font-size: 13px; 
-            text-align: center; /* Centrado total */
+            margin-top: 25px; 
+            color: #777; 
+            font-size: 12px; 
             border-top: 1px solid #333;
-            padding-top: 20px;
+            padding-top: 15px;
         }
         .fecha-sorteo { 
             background: #333; 
             color: #ff4081; 
-            padding: 8px 15px; 
-            border-radius: 20px; 
+            padding: 5px 12px; 
+            border-radius: 15px; 
             display: inline-block; 
-            margin: 15px 0; 
+            margin: 10px 0; 
             font-weight: bold; 
-            border: 1px solid #ff4081; 
         }
     </style>
 </head>
@@ -117,4 +104,95 @@
     <h1>🐰 RIFA DE PASCUAS</h1>
     <span class="subtitulo">VIAJE DE EGRESADOS 🎓</span>
 
-    <div class
+    <div class="info-box">
+        <div style="font-size: 13px;">
+            🥇 1er: Lechón en horno de barro<br>
+            🥈 2do: 5 kg de asado<br>
+            🥉 3er: Un clavo oxidado
+        </div>
+        <div class="pago-info">
+            <span style="font-weight:bold; color:#ff4081;">🎟 VALOR: $5000</span><br>
+            <div class="alias-click" onclick="copiarAlias('mieltresreinas.nx')">mieltresreinas.nx</div>
+            <div id="copiado-aviso" style="display:none; color:#4caf50; font-size:10px;">¡Copiado!</div>
+        </div>
+    </div>
+
+    <div id="grilla" class="grilla">Cargando números...</div>
+
+    <div id="form-reserva">
+        <h3 style="margin-top:0;">N° <span id="nro-elegido" style="color:#ff4081"></span></h3>
+        <input type="text" id="nombre-cliente" placeholder="Tu nombre">
+        <input type="tel" id="tel-cliente" placeholder="WhatsApp">
+        <button onclick="enviarReserva()">RESERVAR AHORA</button>
+    </div>
+
+    <div class="footer">
+        <p>¡Gracias por ayudarnos a cumplir este sueño! ✨</p>
+        <div class="fecha-sorteo">📅 SORTEO: 31/03/2026 - 11:00 AM</div>
+        <p>Todo lo recaudado será destinado para nuestro<br>viaje de egresados. 🎓</p>
+    </div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxp31A5qhqfKD4B7mtUc6Buo9thq30k6SESxbi4pRMrKTKU0QwOMTgS2vTX8xrlCnjY/exec';
+    let numeroSeleccionado = null;
+
+    function copiarAlias(texto) {
+        navigator.clipboard.writeText(texto);
+        document.getElementById('copiado-aviso').style.display = 'block';
+        setTimeout(() => { document.getElementById('copiado-aviso').style.display = 'none'; }, 2000);
+    }
+
+    async function cargarNumeros() {
+        try {
+            const response = await fetch(scriptURL);
+            const data = await response.json();
+            const grilla = document.getElementById('grilla');
+            grilla.innerHTML = '';
+            
+            for (let i = 1; i < data.length; i++) {
+                const nro = data[i][0];
+                const estado = data[i][2];
+                const div = document.createElement('div');
+                div.className = 'nro' + (estado === 'Reservado' ? ' reservado' : '');
+                div.innerText = nro;
+                
+                if (estado !== 'Reservado') {
+                    div.onclick = () => {
+                        document.querySelectorAll('.nro').forEach(el => el.classList.remove('seleccionado'));
+                        div.classList.add('seleccionado');
+                        numeroSeleccionado = nro;
+                        document.getElementById('nro-elegido').innerText = nro;
+                        document.getElementById('form-reserva').style.display = 'block';
+                    };
+                }
+                grilla.appendChild(div);
+            }
+        } catch (e) {
+            document.getElementById('grilla').innerText = "Error al cargar. Refresca la página.";
+        }
+    }
+
+    async function enviarReserva() {
+        const nombre = document.getElementById('nombre-cliente').value;
+        const telefono = document.getElementById('tel-cliente').value;
+        if (!nombre || !telefono) return alert("Completa tus datos");
+
+        const msj = encodeURIComponent(`Hola! Reservé el N° ${numeroSeleccionado}. Soy ${nombre}.`);
+        const urlWa = `https://wa.me/5492995304691?text=${msj}`;
+
+        try {
+            await fetch(scriptURL, {
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify({ numero: numeroSeleccionado, nombre: nombre, telefono: telefono })
+            });
+            window.open(urlWa, '_blank');
+            location.reload();
+        } catch (e) { alert("Error"); }
+    }
+
+    window.onload = cargarNumeros;
+</script>
+</body>
+</html>
