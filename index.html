@@ -6,7 +6,7 @@
     <title>Rifa de Pascuas</title>
     <style>
         body { 
-            font-family: sans-serif; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             background-color: #121212; 
             color: #e0e0e0; 
             padding: 10px; 
@@ -17,7 +17,7 @@
             background: #1e1e1e; 
             padding: 15px; 
             border-radius: 20px; 
-            max-width: 500px; 
+            max-width: 450px; 
             margin: auto; 
             border: 1px solid #333;
         }
@@ -70,31 +70,65 @@
             border-radius: 4px; 
             cursor: pointer; 
             font-weight: bold; 
-            font-size: 11px; /* Fuente pequeña para que entre en 10 cols */
+            font-size: 11px;
             border: 1px solid #3d3d3d;
+            transition: 0.2s;
         }
         .nro.reservado { background: #111; color: #333; cursor: not-allowed; text-decoration: line-through; border: none; }
-        .nro.seleccionado { background: #ff4081; color: white; border-color: white; }
+        .nro.seleccionado { background: #ff4081; color: white; border-color: white; transform: scale(1.1); }
         
-        #form-reserva { display: none; margin-top: 15px; padding: 15px; background: #252525; border-radius: 15px; border: 1px solid #ff4081; }
-        input { padding: 10px; width: 85%; margin-bottom: 10px; border-radius: 8px; border: 1px solid #444; background: #121212; color: white; }
-        button { background: #25d366; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; }
+        /* FORMULARIO */
+        #form-reserva { 
+            display: none; 
+            margin-top: 20px; 
+            padding: 20px; 
+            background: #252525; 
+            border-radius: 15px; 
+            border: 1px solid #ff4081;
+            /* Animación simple de aparición */
+            animation: fadeIn 0.4s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        input { 
+            padding: 12px; 
+            width: 90%; 
+            margin-bottom: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #444; 
+            background: #121212; 
+            color: white; 
+            font-size: 16px;
+        }
+        button { 
+            background: #25d366; 
+            color: white; 
+            border: none; 
+            padding: 15px; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: bold; 
+            width: 100%; 
+            font-size: 16px;
+        }
 
         .footer { 
-            margin-top: 25px; 
+            margin-top: 30px; 
             color: #777; 
-            font-size: 12px; 
+            font-size: 13px; 
             border-top: 1px solid #333;
-            padding-top: 15px;
+            padding-top: 20px;
+            text-align: center;
         }
         .fecha-sorteo { 
             background: #333; 
             color: #ff4081; 
-            padding: 5px 12px; 
-            border-radius: 15px; 
+            padding: 6px 15px; 
+            border-radius: 20px; 
             display: inline-block; 
-            margin: 10px 0; 
+            margin: 15px 0; 
             font-weight: bold; 
+            border: 1px solid #ff4081;
         }
     </style>
 </head>
@@ -105,25 +139,26 @@
     <span class="subtitulo">VIAJE DE EGRESADOS 🎓</span>
 
     <div class="info-box">
-        <div style="font-size: 13px;">
-            🥇 1er: Lechón en horno de barro<br>
-            🥈 2do: 5 kg de asado<br>
-            🥉 3er: Un clavo oxidado
+        <div style="font-size: 14px; line-height: 1.6;">
+            🥇 <b>1er:</b> Lechón en horno de barro 🍖<br>
+            🥈 <b>2do:</b> 5 kg de asado 🥩<br>
+            🥉 <b>3er:</b> Un clavo oxidado 🔨
         </div>
         <div class="pago-info">
-            <span style="font-weight:bold; color:#ff4081;">🎟 VALOR: $5000</span><br>
+            <span style="font-weight:bold; color:#ff4081; font-size:18px;">🎟 VALOR: $5000</span><br>
             <div class="alias-click" onclick="copiarAlias('mieltresreinas.nx')">mieltresreinas.nx</div>
-            <div id="copiado-aviso" style="display:none; color:#4caf50; font-size:10px;">¡Copiado!</div>
+            <div id="copiado-aviso" style="display:none; color:#4caf50; font-size:12px; margin-top:5px;">¡Copiado! ✅</div>
         </div>
     </div>
 
-    <div id="grilla" class="grilla">Cargando números...</div>
+    <div id="grilla" class="grilla">Cargando números... ⏳</div>
 
     <div id="form-reserva">
-        <h3 style="margin-top:0;">N° <span id="nro-elegido" style="color:#ff4081"></span></h3>
-        <input type="text" id="nombre-cliente" placeholder="Tu nombre">
-        <input type="tel" id="tel-cliente" placeholder="WhatsApp">
-        <button onclick="enviarReserva()">RESERVAR AHORA</button>
+        <h3 style="margin-top:0; color:#ff4081;">📍 Reservando el N° <span id="nro-elegido"></span></h3>
+        <p style="font-size: 12px; color: #aaa; margin-bottom: 15px;">Completá tus datos para agendarte:</p>
+        <input type="text" id="nombre-cliente" placeholder="Tu nombre completo">
+        <input type="tel" id="tel-cliente" placeholder="WhatsApp (Ej: 2995304691)">
+        <button onclick="enviarReserva()">✅ RESERVAR Y ENVIAR COMPROBANTE</button>
     </div>
 
     <div class="footer">
@@ -135,17 +170,19 @@
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxp31A5qhqfKD4B7mtUc6Buo9thq30k6SESxbi4pRMrKTKU0QwOMTgS2vTX8xrlCnjY/exec';
+    const miWhatsApp = "5492995304691";
     let numeroSeleccionado = null;
 
     function copiarAlias(texto) {
         navigator.clipboard.writeText(texto);
-        document.getElementById('copiado-aviso').style.display = 'block';
-        setTimeout(() => { document.getElementById('copiado-aviso').style.display = 'none'; }, 2000);
+        const aviso = document.getElementById('copiado-aviso');
+        aviso.style.display = 'block';
+        setTimeout(() => { aviso.style.display = 'none'; }, 2000);
     }
 
     async function cargarNumeros() {
         try {
-            const response = await fetch(scriptURL);
+            const response = await fetch(scriptURL, { method: 'GET', cache: 'no-store' });
             const data = await response.json();
             const grilla = document.getElementById('grilla');
             grilla.innerHTML = '';
@@ -158,28 +195,39 @@
                 div.innerText = nro;
                 
                 if (estado !== 'Reservado') {
-                    div.onclick = () => {
+                    div.onclick = function() {
+                        // 1. Marcar el número visualmente
                         document.querySelectorAll('.nro').forEach(el => el.classList.remove('seleccionado'));
                         div.classList.add('seleccionado');
+                        
+                        // 2. Mostrar el formulario
                         numeroSeleccionado = nro;
                         document.getElementById('nro-elegido').innerText = nro;
-                        document.getElementById('form-reserva').style.display = 'block';
+                        const formulario = document.getElementById('form-reserva');
+                        formulario.style.display = 'block';
+                        
+                        // 3. AUTO-SCROLL: Baja automáticamente al formulario
+                        formulario.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     };
                 }
                 grilla.appendChild(div);
             }
         } catch (e) {
-            document.getElementById('grilla').innerText = "Error al cargar. Refresca la página.";
+            document.getElementById('grilla').innerText = "Error al cargar. Refrescá la página.";
         }
     }
 
     async function enviarReserva() {
         const nombre = document.getElementById('nombre-cliente').value;
         const telefono = document.getElementById('tel-cliente').value;
-        if (!nombre || !telefono) return alert("Completa tus datos");
+        if (!nombre || !telefono) return alert("Por favor, completá nombre y WhatsApp.");
 
-        const msj = encodeURIComponent(`Hola! Reservé el N° ${numeroSeleccionado}. Soy ${nombre}.`);
-        const urlWa = `https://wa.me/5492995304691?text=${msj}`;
+        const btn = event.target;
+        btn.innerText = "⏳ GUARDANDO...";
+        btn.disabled = true;
+
+        const msj = encodeURIComponent(`¡Hola! Soy ${nombre}, reservé el N° ${numeroSeleccionado}. ✨ Adjunto comprobante.`);
+        const urlWa = `https://wa.me/${miWhatsApp}?text=${msj}`;
 
         try {
             await fetch(scriptURL, {
@@ -188,8 +236,13 @@
                 body: JSON.stringify({ numero: numeroSeleccionado, nombre: nombre, telefono: telefono })
             });
             window.open(urlWa, '_blank');
+            alert("¡Número reservado! Ahora enviá el comprobante.");
             location.reload();
-        } catch (e) { alert("Error"); }
+        } catch (e) {
+            alert("Hubo un error. Intentá de nuevo.");
+            btn.innerText = "✅ RESERVAR Y ENVIAR COMPROBANTE";
+            btn.disabled = false;
+        }
     }
 
     window.onload = cargarNumeros;
