@@ -1,4 +1,56 @@
-async function enviarReserva() {
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxp31A5qhqfKD4B7mtUc6Buo9thq30k6SESxbi4pRMrKTKU0QwOMTgS2vTX8xrlCnjY/exec';
+    const miWhatsApp = "5492995304691";
+    let numeroSeleccionado = null;
+
+    function copiarAlias(texto) {
+        navigator.clipboard.writeText(texto);
+        const aviso = document.getElementById('copiado-aviso');
+        aviso.style.display = 'block';
+        setTimeout(() => { aviso.style.display = 'none'; }, 2000);
+    }
+
+    async function cargarNumeros() {
+        try {
+            const response = await fetch(scriptURL, { method: 'GET', cache: 'no-store' });
+            const data = await response.json();
+            const grilla = document.getElementById('grilla');
+            grilla.innerHTML = '';
+            
+            let reservados = 0;
+            let total = data.length - 1;
+
+            for (let i = 1; i < data.length; i++) {
+                const nro = data[i][0];
+                const estado = data[i][2];
+                if (estado === 'Reservado') reservados++;
+
+                const div = document.createElement('div');
+                div.className = 'nro' + (estado === 'Reservado' ? ' reservado' : '');
+                div.innerText = nro;
+                
+                if (estado !== 'Reservado') {
+                    div.onclick = function() {
+                        document.querySelectorAll('.nro').forEach(el => el.classList.remove('seleccionado'));
+                        div.classList.add('seleccionado');
+                        numeroSeleccionado = nro;
+                        document.getElementById('nro-elegido').innerText = nro;
+                        document.getElementById('form-reserva').style.display = 'block';
+                        document.getElementById('form-reserva').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    };
+                }
+                grilla.appendChild(div);
+            }
+            // Actualizar barra
+            let porcentaje = Math.round((reservados / total) * 100);
+            document.getElementById('barra-progreso').style.width = porcentaje + "%";
+            document.getElementById('porcentaje-texto').innerText = porcentaje + "% COMPLETADO";
+        } catch (e) {
+            document.getElementById('grilla').innerText = "Error al cargar números.";
+        }
+    }
+
+    async function enviarReserva() {
         const nombre = document.getElementById('nombre-cliente').value;
         const telefono = document.getElementById('tel-cliente').value;
         
@@ -6,9 +58,7 @@ async function enviarReserva() {
             return alert("Por favor, completá tu nombre y WhatsApp.");
         }
 
-        // Seleccionamos el botón para dar feedback visual
         const btn = document.querySelector("#form-reserva button");
-        const textoOriginal = btn.innerText;
         btn.innerText = "⏳ GUARDANDO...";
         btn.disabled = true;
 
@@ -16,24 +66,22 @@ async function enviarReserva() {
         const urlWa = `https://api.whatsapp.com/send?phone=${miWhatsApp}&text=${msj}`;
 
         try {
-            // Guardamos en el Excel
             await fetch(scriptURL, {
                 method: 'POST',
                 mode: 'no-cors',
-                body: JSON.stringify({ 
-                    numero: numeroSeleccionado, 
-                    nombre: nombre, 
-                    telefono: telefono 
-                })
+                body: JSON.stringify({ numero: numeroSeleccionado, nombre: nombre, telefono: telefono })
             });
 
-            // ÉXITO: Abrimos WhatsApp usando 'location.href' que es más efectivo en celulares
-            alert("¡Número reservado con éxito! Ahora te redirigimos al WhatsApp para que envíes el comprobante.");
+            alert("¡Número reservado! Ahora te redirigimos al WhatsApp.");
             window.location.href = urlWa;
-
         } catch (e) {
-            alert("Hubo un error al guardar. Intentá de nuevo.");
-            btn.innerText = textoOriginal;
+            alert("Hubo un error al guardar.");
+            btn.innerText = "✅ CONFIRMAR RESERVA";
             btn.disabled = false;
         }
     }
+
+    window.onload = cargarNumeros;
+</script>
+</body>
+</html>
