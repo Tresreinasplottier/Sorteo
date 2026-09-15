@@ -7,40 +7,46 @@
     <style>
         * { box-sizing: border-box; }
         body { 
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
-            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
-            color: #1e293b; 
+            font-family: 'Courier New', Courier, monospace; 
+            background-color: #050811;
+            color: #00ffcc; 
             padding: 15px 10px; 
             margin: 0;
             text-align: center;
             min-height: 100vh;
         }
         .container { 
-            background: #ffffff; 
-            padding: 24px 18px; 
-            border-radius: 24px; 
+            background: #0a0e1a; 
+            padding: 20px 15px; 
+            border-radius: 12px; 
             max-width: 480px; 
             margin: auto; 
-            border: 1px solid #bae6fd;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border: 2px solid #00d8ff;
+            box-shadow: 0 0 15px rgba(0, 216, 255, 0.4), inset 0 0 10px rgba(0, 216, 255, 0.1);
         }
 
         .header-theo { margin-bottom: 15px; }
-        h1 { color: #0369a1; font-size: 26px; margin: 5px 0 2px; font-weight: 800; }
+        h1 { 
+            color: #00d8ff; 
+            font-size: 24px; 
+            margin: 5px 0 2px; 
+            text-shadow: 0 0 8px #00d8ff;
+            letter-spacing: -1px;
+        }
         .subtitulo-egresados { 
-            color: #f97316; 
-            font-weight: 700; 
-            letter-spacing: 1.5px; 
-            font-size: 12px;
+            color: #ff007f; 
+            font-weight: bold; 
+            letter-spacing: 2px; 
+            font-size: 11px;
             display: inline-block;
-            background: #fff7ed;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid #ffedd5;
+            background: #1a001a;
+            padding: 4px 10px;
+            border: 1px solid #ff007f;
+            box-shadow: 0 0 8px #ff007f;
             margin-bottom: 15px;
         }
 
-        /* COLLAGE CENTRAL */
+        /* COLLAGE CENTRAL RETRO */
         .collage-container {
             position: relative;
             width: 100%;
@@ -53,111 +59,114 @@
         }
         .foto-collage {
             position: absolute;
-            border-radius: 16px;
-            border: 4px solid #ffffff;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
+            border-radius: 4px;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
             object-fit: cover;
-            background: #f1f5f9;
+            background: #000;
         }
         .foto1 { width: 130px; height: 130px; transform: rotate(-8deg) translateX(-60px); z-index: 1; }
         .foto2 { width: 125px; height: 165px; transform: rotate(3deg) translateY(-5px); z-index: 3; }
         .foto3 { width: 110px; height: 150px; transform: rotate(-6deg) translateX(70px) translateY(10px); z-index: 2; }
 
         .historia { 
-            background: #f0f9ff; 
-            padding: 16px; 
-            border-radius: 18px; 
-            font-size: 14px; 
-            line-height: 1.6;
+            background: #04121e; 
+            padding: 15px; 
+            border-radius: 8px; 
+            font-size: 13px; 
+            line-height: 1.5;
             margin-bottom: 20px;
-            color: #0369a1;
-            border: 1px solid #e0f2fe;
+            color: #e0f7fa;
+            border: 1px dashed #00d8ff;
             text-align: left;
         }
 
         .premios-box { 
-            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); 
-            border-radius: 20px; 
-            padding: 18px; 
+            background: #12001a; 
+            border-radius: 10px; 
+            padding: 15px; 
             margin: 20px 0; 
-            border: 1px solid #fed7aa; 
+            border: 1px solid #ff007f; 
+            box-shadow: 0 0 10px rgba(255, 0, 127, 0.2);
             text-align: left; 
         }
-        .premio-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 15px; color: #9a3412; }
+        .premio-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 14px; color: #fff; }
         .premio-item:last-child { margin-bottom: 0; }
         .premio-nro { 
-            background: #f97316; 
-            color: white; 
-            width: 26px; 
-            height: 26px; 
-            border-radius: 50%; 
+            background: #ff007f; 
+            color: #fff; 
+            width: 24px; 
+            height: 24px; 
+            border-radius: 4px; 
             display: flex; 
             align-items: center; 
             justify-content: center; 
             font-weight: bold; 
             font-size: 12px; 
-            margin-right: 12px;
-            box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+            margin-right: 10px;
+            box-shadow: 0 0 5px #ff007f;
         }
 
         .meta-container { margin: 25px 0; text-align: left; }
-        .meta-label { font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; display: flex; justify-content: space-between; }
-        .progress-bar-bg { background: #e2e8f0; height: 16px; border-radius: 10px; overflow: hidden; }
+        .meta-label { font-size: 11px; font-weight: bold; color: #00d8ff; margin-bottom: 6px; display: flex; justify-content: space-between; }
+        .progress-bar-bg { background: #000; height: 16px; border-radius: 4px; border: 1px solid #00d8ff; overflow: hidden; }
         .progress-bar-fill { 
-            background: linear-gradient(90deg, #0ea5e9, #10b981); 
+            background: linear-gradient(90deg, #00d8ff, #00ffcc); 
             height: 100%; width: 0%; transition: width 1.5s ease-in-out;
+            box-shadow: 0 0 8px #00ffcc;
         }
 
         .info-pago { 
-            background: #f8fafc; 
-            border-radius: 20px; 
-            padding: 18px; 
+            background: #001a1a; 
+            border-radius: 10px; 
+            padding: 15px; 
             margin-bottom: 20px; 
-            border: 1px solid #e2e8f0; 
+            border: 1px solid #00ffcc; 
         }
         .alias-click { 
-            color: #0284c7; 
-            font-weight: 700; 
+            color: #000; 
+            font-weight: bold; 
             cursor: pointer; 
-            background: #ffffff; 
+            background: #00ffcc; 
             padding: 10px 18px; 
-            border-radius: 12px; 
-            border: 1.5px solid #38bdf8; 
+            border-radius: 6px; 
+            border: none;
             display: inline-block; 
             margin-top: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
-            transition: transform 0.1s;
+            box-shadow: 0 0 10px #00ffcc;
+            font-family: inherit;
         }
-        .alias-click:active { transform: scale(0.98); }
-        #copiado-aviso { font-size: 12px; color: #10b981; display: none; margin-top: 6px; font-weight: bold; }
+        .alias-click:active { transform: scale(0.95); }
+        #copiado-aviso { font-size: 11px; color: #ff007f; display: none; margin-top: 6px; font-weight: bold; }
 
-        .grilla { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; margin: 20px 0; }
+        .grilla { display: grid; grid-template-columns: repeat(10, 1fr); gap: 5px; margin: 20px 0; }
         .nro { 
             aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-            background: #f1f5f9; color: #334155; border-radius: 8px; cursor: pointer; 
-            font-weight: 700; font-size: 11px; border: 1px solid #cbd5e1;
-            transition: all 0.15s ease;
+            background: #000; color: #00ffcc; border-radius: 4px; cursor: pointer; 
+            font-weight: bold; font-size: 11px; border: 1px solid #005577;
+            transition: all 0.1s ease;
         }
-        .nro.reservado { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; text-decoration: line-through; border: 1px solid #cbd5e1; opacity: 0.6; }
-        .nro.seleccionado { background: #0284c7; color: white; transform: scale(1.15); z-index: 5; border-color: #0369a1; box-shadow: 0 4px 8px rgba(2, 132, 199, 0.4); }
+        .nro.reservado { background: #111; color: #444; cursor: not-allowed; text-decoration: line-through; border: 1px solid #222; }
+        .nro.seleccionado { background: #ff007f; color: #fff; transform: scale(1.15); z-index: 5; border-color: #fff; box-shadow: 0 0 12px #ff007f; }
         
-        #form-reserva { display: none; margin-top: 20px; padding: 20px; background: #f0f9ff; border-radius: 20px; border: 2px solid #0284c7; }
-        input { padding: 12px; width: 100%; margin-bottom: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 15px; outline: none; }
-        input:focus { border-color: #0284c7; }
-        button { background: #10b981; color: white; border: none; padding: 14px; border-radius: 10px; cursor: pointer; font-weight: 700; width: 100%; font-size: 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
+        #form-reserva { display: none; margin-top: 20px; padding: 15px; background: #00121a; border-radius: 10px; border: 2px solid #00d8ff; box-shadow: 0 0 12px rgba(0,216,255,0.3); }
+        input { padding: 10px; width: 100%; margin-bottom: 10px; border-radius: 4px; border: 1px solid #00d8ff; background: #000; color: #00ffcc; font-size: 14px; font-family: inherit; outline: none; }
+        input:focus { border-color: #ff007f; box-shadow: 0 0 5px #ff007f; }
+        button { background: #00d8ff; color: #000; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; font-size: 14px; box-shadow: 0 0 10px #00d8ff; font-family: inherit; }
 
-        .footer { margin-top: 25px; color: #64748b; font-size: 12px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .footer { margin-top: 25px; color: #005577; font-size: 11px; border-top: 1px solid #003344; padding-top: 15px; }
         .fecha-sorteo-elegante { 
-            background: #0369a1; 
-            color: white; 
-            padding: 14px 20px; 
-            border-radius: 16px; 
+            background: #002233; 
+            color: #00d8ff; 
+            padding: 12px 18px; 
+            border-radius: 8px; 
+            border: 1px solid #00d8ff;
             display: inline-block; 
             margin: 10px 0; 
-            font-weight: 600;
+            font-weight: bold;
             line-height: 1.4;
-            font-size: 13px;
-            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
+            font-size: 12px;
+            box-shadow: 0 0 8px rgba(0, 216, 255, 0.2);
         }
     </style>
 </head>
@@ -165,7 +174,7 @@
 
 <div class="container">
     <div class="header-theo">
-        <h1>¡Todos por Theo! 🐳</h1>
+        <h1>[ TODOS POR THEO ] 🐳</h1>
         <span class="subtitulo-egresados">🎓 MI VIAJE DE EGRESADOS</span>
     </div>
 
@@ -176,12 +185,12 @@
     </div>
 
     <div class="historia">
-        "¡Hola! Soy Theo Quiuan. Mi sueño es viajar a <b>Puerto Madryn</b> en octubre con mis compañeros para celebrar nuestro egreso. 
+        > "¡Hola! Soy Theo Quiuan. Mi sueño es viajar a <b>Puerto Madryn</b> en octubre con mis compañeros para celebrar nuestro egreso. 
         ¡Con tu ayuda voy a poder conocer las ballenas y disfrutar esta etapa! Muchas gracias por colaborar." ✨
     </div>
 
     <div class="premios-box">
-        <h3 style="margin: 0 0 12px 0; color: #c2410c; font-size: 16px; text-align: center;">🎁 PREMIOS DEL SORTEO</h3>
+        <h3 style="margin: 0 0 10px 0; color: #ff007f; font-size: 15px; text-align: center; text-shadow: 0 0 5px #ff007f;">🎁 PREMIOS DEL SORTEO</h3>
         <div class="premio-item"><div class="premio-nro">1°</div><span><b>$1.000.000</b></span></div>
         <div class="premio-item"><div class="premio-nro">2°</div><span><b>$500.000</b></span></div>
         <div class="premio-item"><div class="premio-nro">3°</div><span><b>$250.000</b></span></div>
@@ -193,29 +202,29 @@
     </div>
 
     <div class="info-pago">
-        <h3 style="margin:0; color:#0284c7; font-size: 18px;">🎟 VALOR NÚMERO: $3.000</h3>
-        <p style="font-size: 12px; color: #64748b; margin: 4px 0 2px;">Alias a nombre de: <b>Silvia Cruz</b></p>
+        <h3 style="margin:0; color:#00ffcc; font-size: 16px; text-shadow: 0 0 5px #00ffcc;">🎟 VALOR NÚMERO: $3.000</h3>
+        <p style="font-size: 11px; color: #888; margin: 4px 0 2px;">Alias a nombre de: <b style="color:#fff;">Silvia Cruz</b></p>
         <div class="alias-click" onclick="copiarAlias('TheoB.0108')">TheoB.0108</div>
-        <div id="copiado-aviso">¡Alias copiado al portapapeles! ✅</div>
+        <div id="copiado-aviso">¡ALIAS COPIADO! ✅</div>
     </div>
 
-    <p style="font-weight:700; font-size:14px; margin-bottom: 12px; color: #334155;">ELEGÍ TU NÚMERO DE LA SUERTE:</p>
+    <p style="font-weight:bold; font-size:13px; margin-bottom: 10px; color: #00d8ff;">> SELECT_NUMBER:</p>
     <div id="grilla" class="grilla">Cargando números...</div>
 
     <div id="form-reserva">
-        <h3 style="margin-top:0; color:#0284c7; font-size: 17px;">📍 Reservando el N° <span id="nro-elegido"></span></h3>
-        <input type="text" id="nombre-cliente" placeholder="Nombre completo">
+        <h3 style="margin-top:0; color:#00d8ff; font-size: 15px;">📍 Reservando N° <span id="nro-elegido"></span></h3>
+        <input type="text" id="nombre-cliente" placeholder="Tu Nombre Completo">
         <input type="tel" id="tel-cliente" placeholder="Tu WhatsApp">
         <button onclick="enviarReserva()">✅ CONFIRMAR Y ENVIAR COMPROBANTE</button>
     </div>
 
    <div class="footer">
         <div class="fecha-sorteo-elegante">
-            ✨ El sorteo se realizará en vivo por nuestras redes sociales <br>
-            una vez completada la venta de los 100 números. <br>
-            <small style="font-weight: normal; opacity: 0.9;">(Avisaremos la fecha exacta por WhatsApp)</small>
+            ⚡ El sorteo se realizará en vivo por nuestras redes <br>
+            al completar la venta de los 100 números. <br>
+            <small style="font-weight: normal; opacity: 0.8;">(Avisaremos la fecha por WhatsApp)</small>
         </div>
-        <p>¡Gracias por ayudarnos a cumplir este sueño! 🎓✨</p>
+        <p>¡Gracias por apoyarnos! 🎓✨</p>
    </div>
 
 <script>
