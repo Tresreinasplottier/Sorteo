@@ -313,7 +313,7 @@
         const btn = document.querySelector("#form-reserva button");
         btn.innerText = "⏳ CONECTANDO...";
         btn.disabled = true;
-        const msj = encodeURIComponent(`¡Hola! Soy ${nombre}, reservé el N° ${numeroSeleccionado} por $3.000 para el viaje de egresados de Theo. 🐳✨`);
+        const msj = encodeURIComponent(`¡Hola! Soy ${nombre}, reservé el N° ${numeroSeleccionado} por $5.000 para el viaje de egresados de Theo. 🐳✨`);
         const urlWa = `https://api.whatsapp.com/send?phone=${miWhatsApp}&text=${msj}`;
         try {
             await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ numero: numeroSeleccionado, nombre: nombre, telefono: telefono }) });
