@@ -3,275 +3,288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorteo Final - Viaje de Egresados Theo 🐳🎓</title>
+    <title>Viaje de Egresados - Theo Quiuan 🐳🎓</title>
     <style>
+        * { box-sizing: border-box; }
         body { 
-            font-family: 'Poppins', 'Segoe UI', sans-serif; 
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            color: #f8fafc; 
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; 
+            background: linear-gradient(180deg, #e0f2fe 0%, #f0f9ff 100%);
+            color: #1e293b; 
             padding: 15px 10px; 
             margin: 0;
             text-align: center;
             min-height: 100vh;
         }
         .container { 
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 25px 20px; 
+            background: #ffffff; 
+            padding: 24px 18px; 
             border-radius: 24px; 
             max-width: 480px; 
             margin: auto; 
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 1px solid #bae6fd;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
         }
 
-        h1 { 
-            background: linear-gradient(to right, #fbbf24, #f59e0b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 26px; 
-            margin: 5px 0 2px;
-            font-weight: 800;
-        }
+        .header-theo { margin-bottom: 15px; }
+        h1 { color: #0369a1; font-size: 26px; margin: 5px 0 2px; font-weight: 800; }
         .subtitulo-egresados { 
-            color: #94a3b8; 
-            font-weight: 600; 
-            letter-spacing: 2px; 
-            font-size: 11px;
-            display: block;
-            margin-bottom: 20px;
-            text-transform: uppercase;
+            color: #f97316; 
+            font-weight: 700; 
+            letter-spacing: 1.5px; 
+            font-size: 12px;
+            display: inline-block;
+            background: #fff7ed;
+            padding: 4px 12px;
+            border-radius: 20px;
+            border: 1px solid #ffedd5;
+            margin-bottom: 15px;
         }
 
-        /* COLLAGE MODERNO CON BORDES BRILLANTES */
+        /* COLLAGE CENTRAL */
         .collage-container {
             position: relative;
             width: 100%;
-            height: 180px;
-            margin-bottom: 25px;
+            height: 220px;
+            margin-bottom: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
+            overflow: hidden;
         }
         .foto-collage {
             position: absolute;
             border-radius: 16px;
-            border: 2px solid rgba(255,255,255,0.2);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.12);
             object-fit: cover;
-            transition: transform 0.3s ease;
+            background: #f1f5f9;
         }
-        .foto1 { width: 110px; height: 110px; transform: rotate(-10deg) translateX(-65px); z-index: 1; }
-        .foto2 { width: 115px; height: 145px; transform: rotate(0deg) translateY(-5px); z-index: 3; border-color: #fbbf24; }
-        .foto3 { width: 100px; height: 135px; transform: rotate(10deg) translateX(70px); z-index: 2; }
+        .foto1 { width: 130px; height: 130px; transform: rotate(-8deg) translateX(-60px); z-index: 1; }
+        .foto2 { width: 125px; height: 165px; transform: rotate(3deg) translateY(-5px); z-index: 3; }
+        .foto3 { width: 110px; height: 150px; transform: rotate(-6deg) translateX(70px) translateY(10px); z-index: 2; }
 
-        /* SECCIÓN SORTEADOR TIPO "SHOW" */
-        .sorteo-box {
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: inset 0 0 15px rgba(251, 191, 36, 0.05);
-        }
-
-        .pantalla-sorteo {
-            background: #020617;
-            color: #38bdf8;
-            font-size: 20px;
-            font-weight: 700;
-            padding: 18px;
-            border-radius: 14px;
-            min-height: 45px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px 0;
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            box-shadow: inset 0 2px 10px rgba(0,0,0,0.8), 0 0 15px rgba(56, 189, 248, 0.1);
-            letter-spacing: 0.5px;
+        .historia { 
+            background: #f0f9ff; 
+            padding: 16px; 
+            border-radius: 18px; 
+            font-size: 14px; 
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #0369a1;
+            border: 1px solid #e0f2fe;
+            text-align: left;
         }
 
-        .btn-sortear {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            color: #0f172a;
-            border: none;
-            padding: 16px 20px;
-            font-size: 16px;
-            font-weight: 800;
-            border-radius: 14px;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
-            transition: all 0.2s ease;
-            width: 100%;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .btn-sortear:hover { transform: translateY(-2px); box-shadow: 0 6px 25px rgba(245, 158, 11, 0.6); }
-        .btn-sortear:active { transform: translateY(0); }
-
-        /* PREMIOS CON TARJETAS ELEGANTES */
         .premios-box { 
-            background: rgba(15, 23, 42, 0.4); 
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); 
             border-radius: 20px; 
-            padding: 20px; 
+            padding: 18px; 
             margin: 20px 0; 
-            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border: 1px solid #fed7aa; 
             text-align: left; 
         }
-        
-        .premio-card {
-            background: rgba(30, 41, 59, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 12px 15px;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .premio-info { display: flex; align-items: center; gap: 12px; }
-        .premio-badge { 
-            background: linear-gradient(135deg, #fbbf24, #d97706); 
-            color: #0f172a; 
-            width: 28px; height: 28px; 
-            border-radius: 8px; 
-            display: flex; align-items: center; justify-content: center; 
-            font-weight: 800; font-size: 13px; 
-        }
-        
-        .premio-monto { font-weight: 700; color: #f8fafc; font-size: 15px; }
-
-        .ganador-tag { 
-            background: rgba(34, 197, 94, 0.15); 
-            color: #4ade80; 
-            border: 1px solid rgba(74, 222, 128, 0.3);
-            font-weight: 600; 
-            padding: 4px 10px; 
-            border-radius: 8px; 
+        .premio-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 15px; color: #9a3412; }
+        .premio-item:last-child { margin-bottom: 0; }
+        .premio-nro { 
+            background: #f97316; 
+            color: white; 
+            width: 26px; 
+            height: 26px; 
+            border-radius: 50%; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            font-weight: bold; 
             font-size: 12px; 
+            margin-right: 12px;
+            box-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
         }
 
-        .footer { margin-top: 25px; color: #64748b; font-size: 12px; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 15px; }
+        .meta-container { margin: 25px 0; text-align: left; }
+        .meta-label { font-size: 12px; font-weight: 700; color: #475569; margin-bottom: 6px; display: flex; justify-content: space-between; }
+        .progress-bar-bg { background: #e2e8f0; height: 16px; border-radius: 10px; overflow: hidden; }
+        .progress-bar-fill { 
+            background: linear-gradient(90deg, #0ea5e9, #10b981); 
+            height: 100%; width: 0%; transition: width 1.5s ease-in-out;
+        }
+
+        .info-pago { 
+            background: #f8fafc; 
+            border-radius: 20px; 
+            padding: 18px; 
+            margin-bottom: 20px; 
+            border: 1px solid #e2e8f0; 
+        }
+        .alias-click { 
+            color: #0284c7; 
+            font-weight: 700; 
+            cursor: pointer; 
+            background: #ffffff; 
+            padding: 10px 18px; 
+            border-radius: 12px; 
+            border: 1.5px solid #38bdf8; 
+            display: inline-block; 
+            margin-top: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.1s;
+        }
+        .alias-click:active { transform: scale(0.98); }
+        #copiado-aviso { font-size: 12px; color: #10b981; display: none; margin-top: 6px; font-weight: bold; }
+
+        .grilla { display: grid; grid-template-columns: repeat(10, 1fr); gap: 6px; margin: 20px 0; }
+        .nro { 
+            aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
+            background: #f1f5f9; color: #334155; border-radius: 8px; cursor: pointer; 
+            font-weight: 700; font-size: 11px; border: 1px solid #cbd5e1;
+            transition: all 0.15s ease;
+        }
+        .nro.reservado { background: #e2e8f0; color: #94a3b8; cursor: not-allowed; text-decoration: line-through; border: 1px solid #cbd5e1; opacity: 0.6; }
+        .nro.seleccionado { background: #0284c7; color: white; transform: scale(1.15); z-index: 5; border-color: #0369a1; box-shadow: 0 4px 8px rgba(2, 132, 199, 0.4); }
+        
+        #form-reserva { display: none; margin-top: 20px; padding: 20px; background: #f0f9ff; border-radius: 20px; border: 2px solid #0284c7; }
+        input { padding: 12px; width: 100%; margin-bottom: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 15px; outline: none; }
+        input:focus { border-color: #0284c7; }
+        button { background: #10b981; color: white; border: none; padding: 14px; border-radius: 10px; cursor: pointer; font-weight: 700; width: 100%; font-size: 15px; box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2); }
+
+        .footer { margin-top: 25px; color: #64748b; font-size: 12px; border-top: 1px solid #f1f5f9; padding-top: 15px; }
+        .fecha-sorteo-elegante { 
+            background: #0369a1; 
+            color: white; 
+            padding: 14px 20px; 
+            border-radius: 16px; 
+            display: inline-block; 
+            margin: 10px 0; 
+            font-weight: 600;
+            line-height: 1.4;
+            font-size: 13px;
+            box-shadow: 0 4px 12px rgba(3, 105, 161, 0.2);
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <div class="container">
     <div class="header-theo">
-        <h1>¡Gran Sorteo Final! 🐳</h1>
-        <span class="subtitulo-egresados">🎓 VIAJE DE EGRESADOS THEO QUIUAN</span>
+        <h1>¡Todos por Theo! 🐳</h1>
+        <span class="subtitulo-egresados">🎓 MI VIAJE DE EGRESADOS</span>
     </div>
 
-    <!-- COLLAGE -->
     <div class="collage-container">
         <img src="theo gato.jpeg" class="foto-collage foto1" alt="Theo con gato">
         <img src="theo escuela 1.jpeg" class="foto-collage foto2" alt="Theo acto escolar">
-        <img src="theo escuela 3.jpeg" class="foto-collage foto3" alt="Theo bandera">
+        <img src="theo escuela 2.jpeg" class="foto-collage foto3" alt="Theo bandera">
     </div>
 
-    <!-- RULETA EN VIVO -->
-    <div class="sorteo-box">
-        <h3 style="margin: 0; color: #fbbf24; font-size: 16px; text-transform: uppercase; letter-spacing: 1px;">🎰 Sorteador en Vivo</h3>
-        <p style="font-size: 12px; color: #94a3b8; margin: 6px 0 12px;">Presioná el botón para seleccionar al ganador al azar:</p>
-        
-        <div id="pantalla" class="pantalla-sorteo">¡Listos para sortear!</div>
-        
-        <button id="btn-girar" class="btn-sortear" onclick="iniciarSorteo()">🎲 GIRAR RULETA</button>
+    <div class="historia">
+        "¡Hola! Soy Theo Quiuan. Mi sueño es viajar a <b>Puerto Madryn</b> en octubre con mis compañeros para celebrar nuestro egreso. 
+        ¡Con tu ayuda voy a poder conocer las ballenas y disfrutar esta etapa! Muchas gracias por colaborar." ✨
     </div>
 
-    <!-- TABLA DE GANADORES -->
     <div class="premios-box">
-        <h3 style="margin: 0 0 15px 0; color: #94a3b8; font-size: 14px; text-align: center; text-transform: uppercase; letter-spacing: 1px;">🏆 Ganadores Oficiales</h3>
-        
-        <div class="premio-card">
-            <div class="premio-info">
-                <div class="premio-badge">1°</div>
-                <div class="premio-monto">$1.000.000</div>
-            </div>
-            <div class="ganador-tag" id="ganador-1">A definir</div>
-        </div>
-        
-        <div class="premio-card">
-            <div class="premio-info">
-                <div class="premio-badge">2°</div>
-                <div class="premio-monto">$500.000</div>
-            </div>
-            <div class="ganador-tag" id="ganador-2">A definir</div>
-        </div>
-        
-        <div class="premio-card">
-            <div class="premio-info">
-                <div class="premio-badge">3°</div>
-                <div class="premio-monto">$250.000</div>
-            </div>
-            <div class="ganador-tag" id="ganador-3">A definir</div>
-        </div>
+        <h3 style="margin: 0 0 12px 0; color: #c2410c; font-size: 16px; text-align: center;">🎁 PREMIOS DEL SORTEO</h3>
+        <div class="premio-item"><div class="premio-nro">1°</div><span><b>$1.000.000</b></span></div>
+        <div class="premio-item"><div class="premio-nro">2°</div><span><b>$500.000</b></span></div>
+        <div class="premio-item"><div class="premio-nro">3°</div><span><b>$250.000</b></span></div>
     </div>
 
-    <div class="footer">
-        <p>¡Muchas gracias a todos por colaborar y acompañar a Theo! 🎓✨</p>
+    <div class="meta-container">
+        <div class="meta-label"><span>META: $300.000</span><span id="porcentaje-texto">Calculando...</span></div>
+        <div class="progress-bar-bg"><div id="barra-progreso" class="progress-bar-fill"></div></div>
     </div>
-</div>
+
+    <div class="info-pago">
+        <h3 style="margin:0; color:#0284c7; font-size: 18px;">🎟 VALOR NÚMERO: $3.000</h3>
+        <p style="font-size: 12px; color: #64748b; margin: 4px 0 2px;">Alias a nombre de: <b>Silvia Cruz</b></p>
+        <div class="alias-click" onclick="copiarAlias('TheoB.0108')">TheoB.0108</div>
+        <div id="copiado-aviso">¡Alias copiado al portapapeles! ✅</div>
+    </div>
+
+    <p style="font-weight:700; font-size:14px; margin-bottom: 12px; color: #334155;">ELEGÍ TU NÚMERO DE LA SUERTE:</p>
+    <div id="grilla" class="grilla">Cargando números...</div>
+
+    <div id="form-reserva">
+        <h3 style="margin-top:0; color:#0284c7; font-size: 17px;">📍 Reservando el N° <span id="nro-elegido"></span></h3>
+        <input type="text" id="nombre-cliente" placeholder="Nombre completo">
+        <input type="tel" id="tel-cliente" placeholder="Tu WhatsApp">
+        <button onclick="enviarReserva()">✅ CONFIRMAR Y ENVIAR COMPROBANTE</button>
+    </div>
+
+   <div class="footer">
+        <div class="fecha-sorteo-elegante">
+            ✨ El sorteo se realizará en vivo por nuestras redes sociales <br>
+            una vez completada la venta de los 100 números. <br>
+            <small style="font-weight: normal; opacity: 0.9;">(Avisaremos la fecha exacta por WhatsApp)</small>
+        </div>
+        <p>¡Gracias por ayudarnos a cumplir este sueño! 🎓✨</p>
+   </div>
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbxp31A5qhqfKD4B7mtUc6Buo9thq30k6SESxbi4pRMrKTKU0QwOMTgS2vTX8xrlCnjY/exec';
-    let listaParticipantes = [];
+    const miWhatsApp = "5492995245061";
+    let numeroSeleccionado = null;
 
-    async function cargarBaseDeDatos() {
+    function copiarAlias(texto) {
+        navigator.clipboard.writeText(texto);
+        const aviso = document.getElementById('copiado-aviso');
+        aviso.style.display = 'block';
+        setTimeout(() => { aviso.style.display = 'none'; }, 2000);
+    }
+
+    async function cargarNumeros() {
+        const grilla = document.getElementById('grilla');
         try {
             const response = await fetch(`${scriptURL}?v=${new Date().getTime()}`);
             const data = await response.json();
-            listaParticipantes = [];
-
+            grilla.innerHTML = '';
+            let totalNumeros = data.length - 1;
+            let reservados = 0;
             for (let i = 1; i < data.length; i++) {
                 const nro = data[i][0];
-                const nombre = data[i][1];
                 const estado = data[i][2];
-                if (estado === 'Reservado' && nombre) {
-                    listaParticipantes.push({ numero: nro, nombre: nombre });
+                if (estado === 'Reservado') reservados++;
+                const div = document.createElement('div');
+                div.className = 'nro' + (estado === 'Reservado' ? ' reservado' : '');
+                div.innerText = nro;
+                if (estado !== 'Reservado') {
+                    div.onclick = function() {
+                        document.querySelectorAll('.nro').forEach(el => el.classList.remove('seleccionado'));
+                        div.classList.add('seleccionado');
+                        numeroSeleccionado = nro;
+                        document.getElementById('nro-elegido').innerText = nro;
+                        document.getElementById('form-reserva').style.display = 'block';
+                        document.getElementById('form-reserva').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    };
                 }
+                grilla.appendChild(div);
             }
+            let porcentaje = Math.round((reservados / totalNumeros) * 100);
+            document.getElementById('barra-progreso').style.width = porcentaje + "%";
+            document.getElementById('porcentaje-texto').innerText = porcentaje + "% COMPLETADO";
         } catch (e) {
-            document.getElementById('pantalla').innerText = "Error cargando lista";
+            grilla.innerHTML = "Error al conectar con el sorteo.";
         }
     }
 
-    function iniciarSorteo() {
-        if (listaParticipantes.length === 0) {
-            alert("No hay participantes cargados o la lista está vacía.");
-            return;
+    async function enviarReserva() {
+        const nombre = document.getElementById('nombre-cliente').value;
+        const telefono = document.getElementById('tel-cliente').value;
+        if (!nombre || !telefono) return alert("Por favor, completa tus datos.");
+        const btn = document.querySelector("#form-reserva button");
+        btn.innerText = "⏳ GUARDANDO...";
+        btn.disabled = true;
+        const msj = encodeURIComponent(`¡Hola! Soy ${nombre}, reservé el N° ${numeroSeleccionado} por $3.000 para el viaje de egresados de Theo. 🐳✨`);
+        const urlWa = `https://api.whatsapp.com/send?phone=${miWhatsApp}&text=${msj}`;
+        try {
+            await fetch(scriptURL, { method: 'POST', mode: 'no-cors', body: JSON.stringify({ numero: numeroSeleccionado, nombre: nombre, telefono: telefono }) });
+            alert("¡Número reservado con éxito! Ahora te redirigimos al WhatsApp para que envíes el comprobante.");
+            window.location.href = urlWa;
+        } catch (e) { 
+            alert("Hubo un error al guardar. Intentá de nuevo."); 
+            btn.innerText = "✅ CONFIRMAR Y ENVIAR COMPROBANTE";
+            btn.disabled = false;
         }
-
-        const pantalla = document.getElementById('pantalla');
-        const boton = document.getElementById('btn-girar');
-        boton.disabled = true;
-
-        let giros = 0;
-        const maxGiros = 30;
-        
-        const intervalo = setInterval(() => {
-            const indiceAzar = Math.floor(Math.random() * listaParticipantes.length);
-            const elegido = listaParticipantes[indiceAzar];
-            
-            pantalla.innerText = `N° ${elegido.numero} - ${elegido.nombre}`;
-            giros++;
-
-            if (giros >= maxGiros) {
-                clearInterval(intervalo);
-                pantalla.style.background = "#14532d";
-                pantalla.style.color = "#4ade80";
-                pantalla.style.borderColor = "#22c55e";
-                pantalla.innerText = `🎉 N° ${elegido.numero} - ${elegido.nombre} 🎉`;
-                boton.disabled = false;
-            }
-        }, 100);
     }
-
-    window.onload = cargarBaseDeDatos;
+    window.onload = cargarNumeros;
 </script>
 </body>
 </html>
